@@ -1,0 +1,463 @@
+<html>
+<head>
+  <title>Dan and Nicole Wilkinson</title>
+</head>
+<body>
+<div id="title" class="slide header">
+  <h1>Pure CSS Parallax</h1>
+</div>
+
+<div id="slide1" class="slide">
+  <div class="title">
+    <h1>Slide 1</h1>
+    <p>Lorem ipsum dolor sit amet, in velit iudico mandamus sit, persius dolorum in per, postulant mnesarchum cu nam. Malis movet ornatus id vim, feugait detracto est ea, eam eruditi conceptam in. Ne sit explicari interesset. Labores perpetua cum at. Id viris docendi denique vim.</p>
+  </div>
+</div>
+
+<div id="slide2" class="slide">
+  <div class="title">
+    <h1>Slide 2</h1>
+    <p>Lorem ipsum dolor sit amet, in velit iudico mandamus sit, persius dolorum in per, postulant mnesarchum cu nam. Malis movet ornatus id vim, feugait detracto est ea, eam eruditi conceptam in. Ne sit explicari interesset. Labores perpetua cum at. Id viris docendi denique vim.</p>
+  </div>
+  <!-- <img src="http://lorempixel.com/640/480/people/6/">
+  <img src="http://lorempixel.com/640/480/people/4/"> -->
+</div>
+
+<div id="slide3" class="slide">
+  <div class="title">
+    <h1>scratch to find out!</h1>
+    <p>drag your mouse or finger over the circle below</p>
+    <p>(p.s., be sure to finish!)</p>
+  </div>
+  <canvas id="confetti"></canvas>
+  <div class="scratch-container">
+    <canvas class="scratch-canvas" height="300" width="300"></canvas>
+    <div class="scratch-prize boy"></div>
+  </div>
+</div>
+
+<div id="slide4" class="slide header">
+    <h1>The End</h1>
+</div>
+
+<style>
+.boy {
+  background-color: blue;
+background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.5) 35px, rgba(255,255,255,.5) 70px);
+}
+.girl {
+  background-color: pink;
+background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.5) 35px, rgba(255,255,255,.5) 70px);
+}
+</style>
+
+<style>
+@import url(http://fonts.googleapis.com/css?family=Nunito);
+
+html {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  margin:0;
+  padding:0;
+  perspective: 1px;
+  transform-style: preserve-3d;
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  font-family: Nunito;
+}
+
+h1 {
+   font-size: 250%
+}
+
+p {
+  font-size: 140%;
+  line-height: 150%;
+  color: #333;
+}
+
+.slide {
+  position: relative;
+  padding: 25vh 10%;
+  min-height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+  box-shadow: 0 -1px 10px rgba(0, 0, 0, .7);
+  transform-style: inherit;
+}
+
+img {
+  position: absolute;
+  top: 50%;
+  left: 35%;
+  width: 320px;
+  height: 240px;
+  transform: translateZ(.25px) scale(.75) translateX(-94%) translateY(-100%) rotate(2deg);
+  padding: 10px;
+  border-radius: 5px;
+  background: rgba(240,230,220, .7);
+  box-shadow: 0 0 8px rgba(0, 0, 0, .7);
+}
+
+img:last-of-type {
+  transform: translateZ(.4px) scale(.6) translateX(-104%) translateY(-40%) rotate(-5deg);
+}
+
+.slide:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left:0;
+  right:0;
+}
+
+.title {
+  width: 50%;
+  padding: 5%;
+  border-radius: 5px;
+  background: rgba(240,230,220, .7);
+  box-shadow: 0 0 8px rgba(0, 0, 0, .7);
+}
+
+.slide:nth-child(2n) .title {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.slide:nth-child(2n+1) .title {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.slide, .slide:before {
+  background: 50% 50% / cover;
+}
+
+.header {
+  text-align: center;
+  font-size: 175%;
+  color: #fff;
+  text-shadow: 0 2px 2px #000;
+}
+
+#title {
+  background-image: url("http://lorempixel.com/320/240/people/6/");
+  background-attachment: fixed;
+}
+
+#slide1:before {
+  background-image: url("http://lorempixel.com/320/240/people/4/");
+  transform: translateZ(-1px) scale(2);
+  z-index:-1;
+}
+
+#slide2 {
+  background-image: url("http://lorempixel.com/320/240/people/3/");
+  background-attachment: fixed;
+}
+
+#slide3:before {
+  background-image: url("http://lorempixel.com/320/240/people/5/");
+  transform: translateZ(-1px) scale(2);
+  z-index:-1;
+}
+
+#slide4 {
+  background: #222;
+}
+</style>
+
+<style>
+.scratch-container {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+.scratch-canvas {
+  position: absolute;
+  top: 0;
+  border-radius: 50%;
+  z-index: 1;
+}
+.scratch-prize {
+  border-radius: 50%;
+  box-shadow: .5vh 1vw 1rem 1px rgba(0, 0, 0, .25), .5vh 1vw 1rem 1px rgba(255, 255, 255, .25)inset;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  visibility: hidden;
+}
+</style>
+<script>
+(function () { 'use strict';
+  var isDrawing, lastPoint,
+      gender       = 'boy',
+      revealAt     = 40,
+      container    = document.getElementById('.scratch-container'),
+      canvas       = document.querySelector('.scratch-canvas'),
+      prize        = document.querySelector('.scratch-prize'),
+      canvasWidth  = canvas.width,
+      canvasHeight = canvas.height,
+      ctx          = canvas.getContext('2d'),
+      image        = new Image(),
+      brush        = new Image();
+
+  // base64 Workaround because Same-Origin-Policy
+  image.src = './robot.png';
+  image.onload = function() {
+    ctx.drawImage(image, 0, 0);
+    // Show the form when Image is loaded.
+    prize.style.visibility = 'visible';
+  };
+  brush.src = './brush.png';
+
+  canvas.addEventListener('mousedown', handleMouseDown, false);
+  canvas.addEventListener('touchstart', handleMouseDown, false);
+  canvas.addEventListener('mousemove', handleMouseMove, false);
+  canvas.addEventListener('touchmove', handleMouseMove, false);
+  canvas.addEventListener('mouseup', handleMouseUp, false);
+  canvas.addEventListener('touchend', handleMouseUp, false);
+
+  function distanceBetween(point1, point2) {
+    return Math.sqrt(Math.pow(point2.x - point1.x, 2) + Math.pow(point2.y - point1.y, 2));
+  }
+
+  function angleBetween(point1, point2) {
+    return Math.atan2( point2.x - point1.x, point2.y - point1.y );
+  }
+
+  // Only test every `stride` pixel. `stride`x faster,
+  // but might lead to inaccuracy
+  function getFilledInPixels(stride) {
+    if (!stride || stride < 1) { stride = 1; }
+
+    var pixels   = ctx.getImageData(0, 0, canvasWidth, canvasHeight),
+        pdata    = pixels.data,
+        l        = pdata.length,
+        total    = (l / stride),
+        count    = 0;
+
+    // Iterate over all pixels
+    for(var i = count = 0; i < l; i += stride) {
+      if (parseInt(pdata[i]) === 0) {
+        count++;
+      }
+    }
+
+    return Math.round((count / total) * 100);
+  }
+
+  function getMouse(e, canvas) {
+    if (e.layerX && e.layerY) {
+      return {
+        x: e.layerX,
+        y: e.layerY
+      };
+    }
+    var offsetX = 0, offsetY = 0, x, y;
+
+    if (canvas.offsetParent !== undefined) {
+      do {
+        offsetX += canvas.offsetLeft;
+        offsetY += canvas.offsetTop;
+      } while ((canvas = canvas.offsetParent));
+    }
+
+    x = (e.pageX || e.touches[0].clientX) - offsetX;
+    y = (e.pageY || e.touches[0].clientY) - offsetY;
+    var pt = {x, y};
+    return pt;
+  }
+
+  function handlePercentage(filledInPixels) {
+    filledInPixels = filledInPixels || 0;
+    if (filledInPixels > revealAt) {
+      canvas.parentNode.removeChild(canvas);
+      prize.classList.remove('boy');
+      prize.classList.remove('girl');
+      prize.classList.add(gender);
+      PopConfetti();
+    } else if (Math.random()>.75) {
+      prize.classList.remove('boy');
+      prize.classList.remove('girl');
+      prize.classList.add(['girl','boy'][~~(Math.random()>.5)])
+    }
+  }
+
+  function handleMouseDown(e) {
+    isDrawing = true;
+    lastPoint = getMouse(e, canvas);
+  }
+
+  function handleMouseMove(e) {
+    if (!isDrawing) { return; }
+
+    e.preventDefault();
+
+    var currentPoint = getMouse(e, canvas),
+        dist = distanceBetween(lastPoint, currentPoint),
+        angle = angleBetween(lastPoint, currentPoint),
+        x, y;
+
+    for (var i = 0; i < dist; i++) {
+      x = lastPoint.x + (Math.sin(angle) * i) - 25;
+      y = lastPoint.y + (Math.cos(angle) * i) - 25;
+      ctx.globalCompositeOperation = 'destination-out';
+      ctx.drawImage(brush, x, y);
+    }
+
+    lastPoint = currentPoint;
+    handlePercentage(getFilledInPixels(32));
+  }
+
+  function handleMouseUp(e) {
+    isDrawing = false;
+  }
+
+})();
+</script>
+
+<style>
+#confetti {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
+}
+</style>
+<script>
+function PopConfetti () {
+  var COLORS, Confetti, NUM_CONFETTI, PI_2, canvas, confetti, context, drawCircle, i, range, resizeWindow, xpos;
+
+  NUM_CONFETTI = 350 + 200;
+
+  COLORS = [[85, 71, 106], [174, 61, 99], [219, 56, 83], [244, 92, 68], [248, 182, 70]];
+
+  PI_2 = 2 * Math.PI;
+
+  canvas = document.getElementById("confetti");
+
+  context = canvas.getContext("2d");
+
+  window.w = 0;
+
+  window.h = 0;
+
+  resizeWindow = function() {
+    window.w = canvas.width = window.innerWidth;
+    return window.h = canvas.height = window.innerHeight;
+  };
+
+  window.addEventListener('resize', resizeWindow, false);
+
+  window.onload = function() {
+    return setTimeout(resizeWindow, 0);
+  };
+  setTimeout(resizeWindow, 0);
+
+  range = function(a, b) {
+    return (b - a) * Math.random() + a;
+  };
+
+  drawCircle = function(x, y, r, style) {
+    context.beginPath();
+    context.arc(x, y, r, 0, PI_2, false);
+    context.fillStyle = style;
+    return context.fill();
+  };
+
+  xpos = 0.5;
+
+  document.onmousemove = function(e) {
+    return xpos = e.pageX / w;
+  };
+
+  window.requestAnimationFrame = (function() {
+    return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function(callback) {
+      return window.setTimeout(callback, 1000 / 60);
+    };
+  })();
+
+  Confetti = (function() {
+    function Confetti() {
+      this.style = COLORS[~~range(0, 5)];
+      this.rgb = "rgba(" + this.style[0] + "," + this.style[1] + "," + this.style[2];
+      this.r = ~~range(2, 6);
+      this.r2 = 2 * this.r;
+      this.replace();
+    }
+
+    Confetti.prototype.replace = function() {
+      this.opacity = 0;
+      this.dop = 0.03 * range(1, 4);
+      this.x = range(-this.r2, w - this.r2);
+      this.y = range(-20, h - this.r2);
+      this.xmax = w - this.r;
+      this.ymax = h - this.r;
+      this.vx = range(0, 2) + 8 * xpos - 5;
+      return this.vy = 0.7 * this.r + range(-1, 1);
+    };
+
+    Confetti.prototype.draw = function() {
+      var ref;
+      this.x += this.vx;
+      this.y += this.vy;
+      this.opacity += this.dop;
+      if (this.opacity > 1) {
+        this.opacity = 1;
+        this.dop *= -1;
+      }
+      if (this.opacity < 0 || this.y > this.ymax) {
+        this.replace();
+      }
+      if (!((0 < (ref = this.x) && ref < this.xmax))) {
+        this.x = (this.x + this.xmax) % this.xmax;
+      }
+      return drawCircle(~~this.x, ~~this.y, this.r, this.rgb + "," + this.opacity + ")");
+    };
+
+    return Confetti;
+
+  })();
+
+  confetti = (function() {
+    var j, ref, results;
+    results = [];
+    for (i = j = 1, ref = NUM_CONFETTI; 1 <= ref ? j <= ref : j >= ref; i = 1 <= ref ? ++j : --j) {
+      results.push(new Confetti);
+    }
+    return results;
+  })();
+
+  window.step = function() {
+    var c, j, len, results;
+    requestAnimationFrame(step);
+    context.clearRect(0, 0, w, h);
+    results = [];
+    for (j = 0, len = confetti.length; j < len; j++) {
+      c = confetti[j];
+      results.push(c.draw());
+    }
+    return results;
+  };
+
+  step();
+
+}
+</script>
+</body>
+</html>
