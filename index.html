@@ -1,33 +1,36 @@
 <html>
 <head>
-  <title>Dan and Nicole Wilkinson</title>
+  <title>Welcoming Wilkinson #2!</title>
 </head>
+<script>
+  var gender = '';
+</script>
 <body>
 <div id="title" class="slide header">
-  <h1>Pure CSS Parallax</h1>
+  <h1>Dan and Nicole Wilkinson
+  <h2>Welcome Max' Little Sister or Brother!</h2></h1>
 </div>
 
 <div id="slide1" class="slide">
   <div class="title">
-    <h1>Slide 1</h1>
-    <p>Lorem ipsum dolor sit amet, in velit iudico mandamus sit, persius dolorum in per, postulant mnesarchum cu nam. Malis movet ornatus id vim, feugait detracto est ea, eam eruditi conceptam in. Ne sit explicari interesset. Labores perpetua cum at. Id viris docendi denique vim.</p>
+    <h1>If you believe the old wives tales&hellip;</h1>
+    <p>there are clues:</p>
+    <img src="./Old Wives tales.jpg"/>
   </div>
 </div>
 
 <div id="slide2" class="slide">
   <div class="title">
-    <h1>Slide 2</h1>
-    <p>Lorem ipsum dolor sit amet, in velit iudico mandamus sit, persius dolorum in per, postulant mnesarchum cu nam. Malis movet ornatus id vim, feugait detracto est ea, eam eruditi conceptam in. Ne sit explicari interesset. Labores perpetua cum at. Id viris docendi denique vim.</p>
+    <h1>So&hellip;
+    <h2>What do <em>you</em> think?</h2></h1>
   </div>
-  <!-- <img src="http://lorempixel.com/640/480/people/6/">
-  <img src="http://lorempixel.com/640/480/people/4/"> -->
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdkIJ9y6lSp4S_CQU3HBvSputtyEVqDHWldy5kcWSgod9iURw/viewform?embedded=true" width="600" height="700" frameborder="0" marginheight="0" marginwidth="0">&hellip;</iframe>
 </div>
 
 <div id="slide3" class="slide">
   <div class="title">
-    <h1>scratch to find out!</h1>
-    <p>drag your mouse or finger over the circle below</p>
-    <p>(p.s., be sure to finish!)</p>
+    <h1>Scratch to find out!</h1>
+    <p>Drag your mouse over the circle below.</p>
   </div>
   <canvas id="confetti"></canvas>
   <div class="scratch-container">
@@ -37,7 +40,10 @@
 </div>
 
 <div id="slide4" class="slide header">
-    <h1>The End</h1>
+    <div class="title">
+      <h1>Joining our family
+      <h2>January 2017!</h2></h1>
+    </div>
 </div>
 
 <style>
@@ -52,8 +58,18 @@ background-image: repeating-linear-gradient(45deg, transparent, transparent 35px
 </style>
 
 <style>
-@import url(http://fonts.googleapis.com/css?family=Nunito);
+@font-face {
+  font-family: 'LucidaCalligraphy-Italic';
+  src: url('LucidaCalligraphy-Italic.eot');
+  src: url('LucidaCalligraphy-Italic.woff2') format('woff2'),
+       url('LucidaCalligraphy-Italic.woff') format('woff'),
+       url('LucidaCalligraphy-Italic.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+</style>
 
+<style>
 html {
   height: 100%;
   overflow: hidden;
@@ -67,7 +83,9 @@ body {
   height: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
-  font-family: Nunito;
+  font-family: LucidaCalligraphy-Italic;
+  background-image: url(./girl-or-boy-colors.jpg);
+  background-size: contain;
 }
 
 h1 {
@@ -75,9 +93,9 @@ h1 {
 }
 
 p {
-  font-size: 140%;
+  font-size: 130%;
   line-height: 150%;
-  color: #333;
+  color: #fff;
 }
 
 .slide {
@@ -86,7 +104,7 @@ p {
   min-height: 100vh;
   width: 100vw;
   box-sizing: border-box;
-  box-shadow: 0 -1px 10px rgba(0, 0, 0, .7);
+  /*box-shadow: 0 -1px 10px rgba(0, 0, 0, .7);*/
   transform-style: inherit;
 }
 
@@ -104,7 +122,7 @@ img {
 }
 
 img:last-of-type {
-  transform: translateZ(.4px) scale(.6) translateX(-104%) translateY(-40%) rotate(-5deg);
+  transform: translateZ(0.5px) scale(0.6) translateX(49%) translateY(-26%) rotate(9deg);
 }
 
 .slide:before {
@@ -117,11 +135,23 @@ img:last-of-type {
 }
 
 .title {
-  width: 50%;
+  width: 45%;
   padding: 5%;
   border-radius: 5px;
+  color: #fff;
+  text-shadow: 0 2px 2px #000;
   background: rgba(240,230,220, .7);
   box-shadow: 0 0 8px rgba(0, 0, 0, .7);
+  background-color: rgba(255, 255, 255, .4);
+  background-image: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(97,97,97,0) 38%, rgba(255,255,255,1) 100%);
+}
+#title h1 {
+  position: relative;
+  top: -2.9em;
+}
+#title h2 {
+  position: relative;
+  top: 1em;
 }
 
 .slide:nth-child(2n) .title {
@@ -130,9 +160,11 @@ img:last-of-type {
 }
 
 .slide:nth-child(2n+1) .title {
-  margin-left: auto;
-  margin-right: 0;
+  margin: auto;
+  width: 80%;
 }
+
+
 
 .slide, .slide:before {
   background: 50% 50% / cover;
@@ -146,29 +178,44 @@ img:last-of-type {
 }
 
 #title {
-  background-image: url("http://lorempixel.com/320/240/people/6/");
+  background-image: url(./girl-or-boy.jpg);
   background-attachment: fixed;
 }
 
 #slide1:before {
-  background-image: url("http://lorempixel.com/320/240/people/4/");
+  background-image: url(./girl-or-boy-colors.jpg);
+  background-size: contain;
   transform: translateZ(-1px) scale(2);
   z-index:-1;
 }
 
 #slide2 {
-  background-image: url("http://lorempixel.com/320/240/people/3/");
+  background-image: url(./girl-or-boy-colors.jpg);
+  background-size: contain;
   background-attachment: fixed;
+}
+#slide2 .title {
+  margin: 1em auto;
+}
+
+#slide2 iframe {
+  position: relative;
+  left: calc(50% - 300px);
 }
 
 #slide3:before {
-  background-image: url("http://lorempixel.com/320/240/people/5/");
+  background-image: url(./girl-or-boy-colors.jpg);
+  background-size: contain;
   transform: translateZ(-1px) scale(2);
   z-index:-1;
 }
+#slide3 .title {
+  margin-bottom: 1em;
+}
 
 #slide4 {
-  background: #222;
+  background-image: url(./girl-or-boy-colors.jpg);
+  background-size: contain;
 }
 </style>
 
@@ -192,7 +239,7 @@ img:last-of-type {
 }
 .scratch-prize {
   border-radius: 50%;
-  box-shadow: .5vh 1vw 1rem 1px rgba(0, 0, 0, .25), .5vh 1vw 1rem 1px rgba(255, 255, 255, .25)inset;
+  box-shadow: .5vh 1vw 1rem 1px rgba(0, 0, 0, .25), .5vh 1vw 1rem 1px rgba(255, 255, 255, .25) inset;
   height: 100%;
   width: 100%;
   position: absolute;
@@ -202,7 +249,6 @@ img:last-of-type {
 <script>
 (function () { 'use strict';
   var isDrawing, lastPoint,
-      gender       = 'boy',
       revealAt     = 40,
       container    = document.getElementById('.scratch-container'),
       canvas       = document.querySelector('.scratch-canvas'),
@@ -213,7 +259,6 @@ img:last-of-type {
       image        = new Image(),
       brush        = new Image();
 
-  // base64 Workaround because Same-Origin-Policy
   image.src = './robot.png';
   image.onload = function() {
     ctx.drawImage(image, 0, 0);
