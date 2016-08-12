@@ -261,6 +261,7 @@ img:last-of-type {
 (function () { 'use strict';
   var isDrawing, lastPoint,
   revealAt = 40,
+  attempts = 2,
   container = document.getElementById('.scratch-container'),
   canvas = document.querySelector('.scratch-canvas'),
   prize = document.querySelector('.scratch-prize'),
@@ -321,19 +322,6 @@ img:last-of-type {
         y: e.layerY
       };
     }
-    var offsetX = 0, offsetY = 0, x, y;
-
-    if (canvas.offsetParent !== undefined) {
-      do {
-        offsetX += canvas.offsetLeft;
-        offsetY += canvas.offsetTop;
-      } while ((canvas = canvas.offsetParent));
-    }
-
-    x = (e.pageX || e.touches[0].clientX) - offsetX;
-    y = (e.pageY || e.touches[0].clientY) - offsetY;
-    var pt = {x, y};
-    return pt;
   }
 
   function handlePercentage(filledInPixels) {
@@ -356,6 +344,9 @@ img:last-of-type {
 }
 
 function handleMouseDown(e) {
+  if (!e.layerX && 0>--attempts) {
+    return handlePercentage(100);
+  }
   isDrawing = true;
   lastPoint = getMouse(e, canvas);
 }
@@ -369,7 +360,7 @@ function handleMouseMove(e) {
   dist = distanceBetween(lastPoint, currentPoint),
   angle = angleBetween(lastPoint, currentPoint),
   x, y;
-
+console.info('hMM', currentPoint, window.e=e);
   for (var i = 0; i < dist; i++) {
     x = lastPoint.x + (Math.sin(angle) * i) - 25;
     y = lastPoint.y + (Math.cos(angle) * i) - 25;
